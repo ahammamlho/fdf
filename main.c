@@ -15,6 +15,7 @@
 #include <mlx.h>
 #include "fdf.h"
 
+
 void print_exit(char *msg)
 {
 	ft_printf("%s \n", msg);

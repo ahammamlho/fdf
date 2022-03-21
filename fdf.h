@@ -16,6 +16,7 @@ typedef struct	s_data {
 	int		endian;
 }				t_data;
 
+
 int ft_is_mapvalid(int file);
 void print_exit(char *msg);
 
