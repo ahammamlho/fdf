@@ -18,14 +18,14 @@
 # include <unistd.h> // read fct
 # include <stdlib.h> // malloc
 
-int		ft_strlen(char *str);
+int		ft_strlen_gnl(char *str);
 void	ft_free_str(char **p);
-int		ft_strchr(char *str);
+int		ft_strchr_gnl(char *str);
 char	*get_next_line(int fd);
 char	*ft_stradd_mot(char *src, char *mot, int a);
-void	ft_bzero(char *str);
-char	*ft_calloc(int count, int size);
+void	ft_bzero_gnl(char *str);
+char	*ft_calloc_gnl(int count, int size);
 void	ft_init_rest(char **temp, char **result, char **rest, char **str_sub);
-char	*ft_substr(char *s, int start, int len, int free_or_not);
+char	*ft_substr_gnl(char *s, int start, int len, int free_or_not);
 
 #endif

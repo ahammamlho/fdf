@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-int	ft_strlen(char *str)
+int	ft_strlen_gnl(char *str)
 {
 	int	i;
 
@@ -31,7 +31,7 @@ void	ft_free_str(char **p)
 	}
 }
 
-int	ft_strchr(char *str)
+int	ft_strchr_gnl(char *str)
 {
 	int		i;
 
@@ -54,7 +54,7 @@ char	*ft_stradd_mot(char *src, char *mot, int a)
 	i = 0;
 	j = 0;
 	result = 0;
-	result = (char *)ft_calloc(ft_strlen(src) + ft_strlen(mot) + 1, 1);
+	result = (char *)ft_calloc_gnl(ft_strlen_gnl(src) + ft_strlen_gnl(mot) + 1, 1);
 	if (!result)
 		return (0);
 	while (src && src[i])
@@ -70,22 +70,22 @@ char	*ft_stradd_mot(char *src, char *mot, int a)
 	return (result);
 }
 
-char	*ft_substr(char *s, int start, int len, int free_or_not)
+char	*ft_substr_gnl(char *s, int start, int len, int free_or_not)
 {
 	char	*result;
 	int		i;
 
 	i = 0;
 	if (!s)
-		return ((char *)ft_calloc(1, 1));
-	if (ft_strlen(s) < start || len == 0)
+		return ((char *)ft_calloc_gnl(1, 1));
+	if (ft_strlen_gnl(s) < start || len == 0)
 	{
-		return ((char *)ft_calloc(1, 1));
+		return ((char *)ft_calloc_gnl(1, 1));
 	}
-	if (ft_strlen(s) - start < len)
-		result = (char *)ft_calloc(ft_strlen(s) - start + 1, 1);
+	if (ft_strlen_gnl(s) - start < len)
+		result = (char *)ft_calloc_gnl(ft_strlen_gnl(s) - start + 1, 1);
 	else
-		result = (char *)ft_calloc(len + 1, 1);
+		result = (char *)ft_calloc_gnl(len + 1, 1);
 	if (!result)
 		return (0);
 	while (s[i + start] != '\0' && i < len)

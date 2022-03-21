@@ -16,7 +16,7 @@
 # define BUFFER_SIZE 1
 #endif
 
-void	ft_bzero(char *str)
+void	ft_bzero_gnl(char *str)
 {
 	int		i;
 
@@ -28,7 +28,7 @@ void	ft_bzero(char *str)
 	}
 }
 
-char	*ft_calloc(int count, int size)
+char	*ft_calloc_gnl(int count, int size)
 {
 	char	*result;
 	int		i;
@@ -50,15 +50,15 @@ void	ft_init_rest(char **temp, char **result, char **rest, char **str_sub)
 	*temp = 0;
 	*result = 0;
 	*str_sub = 0;
-	if (*rest && *rest[0] != 0 && ft_strchr(*rest) == -1)
+	if (*rest && *rest[0] != 0 && ft_strchr_gnl(*rest) == -1)
 	{
 			*result = ft_stradd_mot(*rest, *result, 0);
 			*rest = 0;
 	}
 	else if (*rest && *rest[0] != 0)
 	{
-		*result = ft_substr(*rest, 0, ft_strchr(*rest) + 1, 0);
-		*rest = ft_substr(*rest, ft_strchr(*rest) + 1, ft_strlen(*rest), 1);
+		*result = ft_substr_gnl(*rest, 0, ft_strchr_gnl(*rest) + 1, 0);
+		*rest = ft_substr_gnl(*rest, ft_strchr_gnl(*rest) + 1, ft_strlen_gnl(*rest), 1);
 	}
 }
 
@@ -70,20 +70,20 @@ char	*get_next_line(int fd)
 	char			*str_sub;
 
 	ft_init_rest(&temp, &result, &rest, &str_sub);
-	temp = (char *)ft_calloc(BUFFER_SIZE + 1, 1);
+	temp = (char *)ft_calloc_gnl(BUFFER_SIZE + 1, 1);
 	if (!temp)
 		return (0);
-	while (ft_strchr(result) == -1 && read(fd, temp, BUFFER_SIZE) > 0)
+	while (ft_strchr_gnl(result) == -1 && read(fd, temp, BUFFER_SIZE) > 0)
 	{
-		if (ft_strchr(temp) == -1)
+		if (ft_strchr_gnl(temp) == -1)
 			result = ft_stradd_mot(result, temp, 0);
 		else
 		{
-			str_sub = ft_substr(temp, 0, ft_strchr(temp) + 1, 0);
+			str_sub = ft_substr_gnl(temp, 0, ft_strchr_gnl(temp) + 1, 0);
 			result = ft_stradd_mot(result, str_sub, 1);
-			rest = ft_substr(temp, ft_strchr(temp) + 1, ft_strlen(temp), 0);
+			rest = ft_substr_gnl(temp, ft_strchr_gnl(temp) + 1, ft_strlen_gnl(temp), 0);
 		}
-		ft_bzero(temp);
+		ft_bzero_gnl(temp);
 	}
 	ft_free_str(&temp);
 	if ((rest && *rest == 0) || (rest && !result))
